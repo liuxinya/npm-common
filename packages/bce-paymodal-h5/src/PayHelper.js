@@ -20,14 +20,15 @@ export default class PayHelper {
 
     browserAlipay(payload) {
         return new Promise(() => {
-            const submitSimpleForm = function(api, data) {
+            // eslint-disable-next-line space-before-function-paren
+            const submitSimpleForm = function (api, data) {
                 const form = $('<form />').attr({
                     action: api,
                     method: 'get',
                     target: '_blank',
                 }).hide();
-
-                $.each(data, function(key, val) {
+                // eslint-disable-next-line space-before-function-paren
+                $.each(data, function (key, val) {
                     form.append($('<input />').attr({
                         name: key,
                         value: val,
