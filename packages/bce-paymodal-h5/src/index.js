@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Pay from './Pay.vue';
+import { initAxios } from './utils/tool';
 
 export default {
     create(config) {
+        initAxios(config.httpConfig);
         const el = document.createElement('div');
         document.body.appendChild(el);
         const payContainerInstance = new Vue({

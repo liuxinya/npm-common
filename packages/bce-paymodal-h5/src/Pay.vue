@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import {Toast as toast} from 'vant';
+import { Toast as toast } from 'vant';
 import VanPopup from 'vant/lib/popup/index';
 import VanCellGroup from 'vant/lib/cell-group/index';
 import VanRadioGroup from 'vant/lib/radio-group/index';
@@ -38,7 +38,7 @@ import VanRadio from 'vant/lib/radio/index';
 import VanCell from 'vant/lib/cell/index';
 import PayHelper from './PayHelper';
 import VanButton from 'vant/lib/button/index';
-import 'vant/lib/index.css'
+import 'vant/lib/index.css';
 
 function getChannelType(payMethod) {
     return payMethod === 'ALIPAY' ? 'ALIPAY' : 'BCEPAY';
@@ -49,7 +49,6 @@ export default {
         orderId: {
             type: String,
             default: '',
-
         },
     },
     components: {
@@ -58,7 +57,7 @@ export default {
         VanRadioGroup,
         VanRadio,
         VanCell,
-        VanButton
+        VanButton,
     },
     data() {
         return {
@@ -87,7 +86,7 @@ export default {
     },
     created() {
         this.show = true;
-        const payHelper = new PayHelper({orderId: this.orderId});
+        const payHelper = new PayHelper({ orderId: this.orderId });
         this.payHelper = payHelper;
         payHelper.getPayInfo().then(e => {
             this.payInfo = e.result;

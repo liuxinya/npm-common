@@ -1,17 +1,19 @@
 {
   "name": "@baidu/bce-paymodal-h5",
-  "version": "1.0.10",
+  "version": "1.0.15",
   "description": "移动支付弹窗",
   "main": "dist/bce-paymodal-h5.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build --target lib --name bce-paymodal-h5 --dest dist src/index.js"
+    "build": "vue-cli-service build --target lib --name bce-paymodal-h5 --dest dist src/index.js",
+    "prepare": "npm run build"
   },
   "dependencies": {
-    "@baidu/bce-helper": "^1.0.10",
+    "@baidu/bce-helper": "^1.0.14",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "jquery": "3.5.1",
     "vant": "^2.12.25",
     "vue": "^2.6.11"
   },

@@ -8244,6 +8244,11 @@ jest@^27.0.4:
     import-local "^3.0.2"
     jest-cli "^27.0.4"
 
+jquery@3.5.1:
+  version "3.5.1"
+  resolved "http://registry.npm.baidu-int.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
+  integrity sha1-17TQjhv9uGrS8aPQOeoXMEcXq7U=
+
 js-message@1.0.7:
   version "1.0.7"
   resolved "http://registry.npm.baidu-int.com/js-message/-/js-message-1.0.7.tgz#fbddd053c7a47021871bb8b2c95397cc17c20e47"

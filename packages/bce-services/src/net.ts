@@ -46,7 +46,11 @@ export class UNetService {
             Object.keys(query).forEach((item: string) => {
                 assemblyUrlQuery[`:${item}`] = (query as any)[item];
             });
-            return replaceOfString(url, assemblyUrlQuery).replace('//', '/');
+            if (url.includes('http://') || url.includes('https://')) {
+                return replaceOfString(url, assemblyUrlQuery);
+            } else {
+                return replaceOfString(url, assemblyUrlQuery).replace('//', '/');
+            }
         } else {
             return url;
         }

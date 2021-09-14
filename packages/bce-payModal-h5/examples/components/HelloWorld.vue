@@ -7,6 +7,7 @@
 <script>
 // import test from './bce-paymodal-h5.umd'
 // import './bce-paymodal-h5.css'
+import test from '../../src/index';
 export default {
   name: 'HelloWorld',
   props: {
@@ -14,12 +15,16 @@ export default {
   },
   methods: {
     test () {
-      // console.log(12)
-      // console.log(test)
-      // const payInstance = test.create({orderId: '123739982c3a42cbbe850ef731d57392'});
-      // payInstance.$on('paySucess', () => {
-      //     this.step = 2;
-      // });
+      console.log(test);
+      const payInstance = test.create({
+        orderId: '123739982c3a42cbbe850ef731d57392',
+        httpConfig: {
+          baseURL: 'https://www.baidu.com'
+        }
+      });
+      payInstance.$on('paySucess', () => {
+          this.step = 2;
+      });
     }
   }
 }
