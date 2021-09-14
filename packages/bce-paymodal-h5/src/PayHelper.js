@@ -43,8 +43,10 @@ export default class PayHelper {
                 form.submit();
                 form.remove();
             };
-
-            submitSimpleForm('/api/finance/payment/v2', payload);
+            const url = http.defaults.baseURL
+                ? `${http.defaults.baseURL}/api/finance/payment/v2`
+                : '/api/finance/payment/v2';
+            submitSimpleForm(url, payload);
         });
     }
 

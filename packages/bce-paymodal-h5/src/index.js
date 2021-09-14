@@ -16,4 +16,4 @@ export default {
         }).$mount(el);
         return payContainerInstance.$children && payContainerInstance.$children[0];
     },
- };
+};
