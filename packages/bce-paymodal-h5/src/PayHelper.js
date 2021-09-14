@@ -20,14 +20,14 @@ export default class PayHelper {
 
     browserAlipay(payload) {
         return new Promise(() => {
-            const submitSimpleForm = function (api, data) {
+            const submitSimpleForm = function(api, data) {
                 const form = $('<form />').attr({
                     action: api,
                     method: 'get',
-                    target: '_self',
+                    target: '_blank',
                 }).hide();
 
-                $.each(data, function (key, val) {
+                $.each(data, function(key, val) {
                     form.append($('<input />').attr({
                         name: key,
                         value: val,

@@ -4,6 +4,7 @@ import { initAxios } from './utils/tool';
 
 export default {
     create(config) {
+        // 外界可自行配置axios
         initAxios(config.httpConfig);
         const el = document.createElement('div');
         document.body.appendChild(el);
