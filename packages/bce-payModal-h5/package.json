@@ -1,6 +1,6 @@
 {
   "name": "@baidu/bce-paymodal-h5",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "移动支付弹窗",
   "main": "dist/bce-paymodal-h5.umd.min.js",
   "scripts": {
