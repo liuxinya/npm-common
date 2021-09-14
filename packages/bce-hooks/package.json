@@ -1,6 +1,6 @@
 {
   "name": "@baidu/bce-hooks",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "项目通用hook",
   "main": "dist/index.js",
   "directories": {
@@ -23,8 +23,8 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@baidu/bce-helper": "^1.0.16",
-    "@baidu/bce-services": "^1.0.16",
+    "@baidu/bce-helper": "^1.0.17",
+    "@baidu/bce-services": "^1.0.17",
     "@baidu/ioc": "^1.0.0",
     "@types/lodash": "^4.14.165",
     "@types/react": "^17.0.0",
