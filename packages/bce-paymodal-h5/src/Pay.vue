@@ -19,6 +19,23 @@
                     </van-radio-group>
                 </van-cell>
             </van-cell-group>
+            <div 
+                class="balance-pay-detail"
+                v-if="payMethod === 'balance' && payInfo.balanceFundDetails && payInfo.balanceFundDetails.length > 0"
+            >
+                <span class="label">余额类别</span>
+                <div class="rest-list-wrapper">
+                    <div class='rest-list-item' v-for="item in payInfo.balanceFundDetails" :key="item.fundSetId">
+                        <div class="desc">
+                            {{`${item.fundBillTypeDesc}：`}}
+                        </div>
+                        <div class="val">
+                            {{`可用 ￥${item.balance}`}}
+                            <span v-if="item.allocAmount && item.allocAmount > 0">已选 <i>￥{{item.allocAmount}}</i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="footer">
                 <van-button
                     type="info" :loading="payButtonLoading"
@@ -63,7 +80,7 @@ export default {
         return {
             show: true,
             sumAmount: '',
-            payMethod: 1,
+            payMethod: 'balance',
             payHelper: null,
             payInfo: {
                 sumCashAmount: '',
@@ -82,6 +99,7 @@ export default {
                 isBalanceEnough: true,
             },
             payButtonLoading: false,
+            balanceFundDetails: []
         };
     },
     created() {
@@ -120,6 +138,42 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.balance-pay-detail {
+    display: flex;
+    padding: 0 16px;
+    align-items: flex-start;
+    border-top: 1px solid #ebedf0;
+    padding-top: 15px;
+    span.label {
+        color: rgba(25, 28, 61, 0.6);
+        font-size: 14px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        white-space: nowrap;
+    }
+    div.rest-list-wrapper {
+        padding-left: 34px;
+        flex: 1;
+        div.rest-list-item {
+            display: flex;
+            flex-wrap: wrap;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 12px;
+            margin: 0;
+            text-align: left;
+            padding: 0;
+            margin-bottom: 10px;
+            div.val {
+                i {
+                    color: red;
+                    font-style: normal;
+                }
+            }
+        }
+    }
+}
 .van-cell-group {
     padding-top: 5px;
 

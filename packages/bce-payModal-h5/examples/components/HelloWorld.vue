@@ -17,9 +17,9 @@ export default {
     test () {
       console.log(test);
       const payInstance = test.create({
-        orderId: '123739982c3a42cbbe850ef731d57392',
+        orderId: 'ca9bd1660f25427cb5eb09b607228d64',
         httpConfig: {
-          baseURL: 'https://www.baidu.com'
+          baseURL: ''
         }
       });
       payInstance.$on('paySucess', () => {
