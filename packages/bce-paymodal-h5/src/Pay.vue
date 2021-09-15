@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <template>
     <van-popup
         v-model="show" position="bottom"
