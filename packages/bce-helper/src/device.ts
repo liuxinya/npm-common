@@ -8,3 +8,7 @@ export function isMobile() {
 export function isWeChat() {
    return /MicroMessenger/i.test(window.navigator.userAgent); 
 }
+
+export function isRetina(): boolean {
+    return window.devicePixelRatio >= 2;
+}
