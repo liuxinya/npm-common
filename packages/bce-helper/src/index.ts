@@ -9,5 +9,6 @@ export * from './file';
 export * from './jsonp';
 export * from './location';
 export * from './object';
+export * from './rem';
 export {DomHelper} from './dom';
 export {RxObject} from './rx';
