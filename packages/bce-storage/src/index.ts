@@ -26,6 +26,7 @@ class BceStorage {
         this.iframeEle = document.createElement('iframe');
         this.iframeEle.setAttribute('src', `${this.origin}/helper/i.html`);
         this.iframeEle.setAttribute('id', 'bceStorage');
+        this.iframeEle.setAttribute('style', 'width:0;height:0;border:0;position:absolute;');
         const bodyEle = document.querySelector('body');
         bodyEle.appendChild(this.iframeEle);
         this.iframeEle.onload = () => {
