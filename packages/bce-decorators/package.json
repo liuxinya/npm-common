@@ -1,6 +1,6 @@
 {
   "name": "@baidu/bce-decorators",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "通用装饰器",
   "main": "dist/index.js",
   "directories": {
@@ -20,7 +20,7 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
-    "@baidu/bce-helper": "^1.0.22",
+    "@baidu/bce-helper": "^1.0.23",
     "@baidu/ioc": "^1.0.0"
   },
   "files": [

@@ -1,6 +1,6 @@
 {
   "name": "@baidu/bce-storage",
-  "version": "1.0.9",
+  "version": "1.0.23",
   "description": "跨域访问cloud.baidu.com域下的localStorage和sessionStorage",
   "main": "dist/index.js",
   "scripts": {
