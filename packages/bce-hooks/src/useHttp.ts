@@ -36,8 +36,10 @@ export function useHttp<Req, Res, ResOrigin = Res, Q = any>(
     (params?: Req, config?: Partial<httpConfig<Req, Res, ResOrigin, Q>>) => Promise<Res>,
     boolean
 ] {
+    const isImmediatelyTem: boolean = isFunction(isImmediately) ? (isImmediately as any)() : isImmediately;
     const [data, setData] = useState<Res>((httpConfig.defaultValue as Res) || null);
-    const [loading, setLoading] = useState<boolean>(false);
+    // loading的值 应该从初始化的时候就确定下来 这样外界对loading的接收就更灵敏 避免 false -> true -> false 这种不必要的变化
+    const [loading, setLoading] = useState<boolean>(Boolean(isImmediatelyTem));
     const http = (
         params = httpConfig.params,
         config: Partial<httpConfig<Req, Res, ResOrigin, Q>> = httpConfig
@@ -66,7 +68,6 @@ export function useHttp<Req, Res, ResOrigin = Res, Q = any>(
         });
     };
     useOnMount(() => {
-        const isImmediatelyTem = isFunction(isImmediately) ? (isImmediately as any)() : isImmediately;
         if (isImmediatelyTem) {
             http(httpConfig.params);
         }
