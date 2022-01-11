@@ -38,6 +38,8 @@ export function wxSdkLoad(config: {
             jsApiList: config.jsApiList || [
                 'updateAppMessageShareData', // 分享给朋友
                 'updateTimelineShareData', // 朋友圈
+                'onMenuShareAppMessage',// 老版本分享接口。
+                'onMenuShareTimeline'// 老版本分享接口。
             ],
         });
         wx.error((e: any) => {
