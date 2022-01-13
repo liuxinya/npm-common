@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest --config jestconfig.json",
+    "test": "jest --config jestconfig.json --verbose --coverage",
     "prepare": "npm run build",
     "prepublishOnly": "npm run test"
   },

@@ -1,18 +1,31 @@
 import {addToArrayByIndex, removeFromArrayByCondition, changePositionByIndex} from '../src/array';
 
-// 向Arr里面添加新项
-test('addToArrayByIndex [1, 3] => [1 ,2 ,3]', () => {
-    const arr = [1, 3];
-    expect(addToArrayByIndex(arr, 1, 2)).toEqual([1, 2, 3]);
-});
+describe('addToArrayByIndex', () => {
+    it('index 大于-1 小于len', () => {
+        expect(addToArrayByIndex([1, 3], 1, 2)).toEqual([1, 2, 3]);
+    });
+    test('index 大于len', () => {
+        expect(addToArrayByIndex([1, 3], 5, 2)).toEqual([1, 3, 2]);
+    });
 
-// 通过某个条件移出某些项
-test('removeFromArrayByCondition remove 1 from [1,3]  => [3]', () => {
-    const arr = [1, 3];
-    expect(
-        removeFromArrayByCondition(arr, (item: number) => item === 1)
-    ).toEqual([3]);
-});
+    test('index 小于len', () => {
+        expect(addToArrayByIndex([1, 3], -1, 2)).toEqual([2, 1, 3]);
+    });
+})
+
+
+describe('removeFromArrayByCondition', () => {
+    test('传入方法条件', () => {
+        expect(
+            removeFromArrayByCondition([1, 3], (item: number) => item === 1)
+        ).toEqual([3]);
+    });
+    test('传非方法条件', () => {
+        expect(
+            removeFromArrayByCondition([1], true)
+        ).toEqual([1]);
+    });
+})
 
 
 // 通过索引交换位置

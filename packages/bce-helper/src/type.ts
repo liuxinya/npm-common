@@ -8,7 +8,9 @@ export function isArray(val: any) {
     return Array.isArray(val);
 }
 export function isObject(val: any, includeArray: boolean = true) {
-    return Object.prototype.toString.call(val) === '[object Object]' && (includeArray ? true : !isArray(val));
+    return includeArray
+    ? (Object.prototype.toString.call(val) === '[object Object]' || isArray(val))
+    : Object.prototype.toString.call(val) === '[object Object]'
 }
 export function isBoolean(val: any) {
     return typeof val === 'boolean';

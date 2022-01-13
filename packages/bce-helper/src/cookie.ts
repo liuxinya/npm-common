@@ -33,13 +33,17 @@ export function delCookie(key: string) {
     document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
 }
 
-function getCookieToObj(isDecode = true) {
+export function clearCookie() {
+    Object.keys(getCookie()).forEach(key => delCookie(key))
+}
+
+function getCookieToObj() {
     const cookie: string = document.cookie;
     const cookieArr: string[] = cookie.split(';');
     const res: cookieObj = {};
     cookieArr.forEach((item: string) => {
         const temArr = item.split('=');
-        res[temArr[0].trim()] = isDecode ? decodeURIComponent(temArr[1]) : temArr[1];
+        res[temArr[0].trim()] = decodeURIComponent(temArr[1]);
     });
     return res;
 }
