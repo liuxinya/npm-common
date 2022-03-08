@@ -50,10 +50,10 @@ export class UDynamicService {
             const name = this.divNameMap.get(ele);
             if (isDeleteOtherSameCom) {
                 const divArr = this.nameDivMap.has(name) ? this.nameDivMap.get(name) : [];
-                divArr.forEach(item => {
-                    this.destroyedEleAndCom(item);
-                    this.removeDivFormMap(name, item);
-                });
+                while (divArr.length > 0) {
+                    this.destroyedEleAndCom(divArr[0]);
+                    this.removeDivFormMap(name, divArr[0]);
+                }
             } else {
                 this.destroyedEleAndCom(ele);
                 this.removeDivFormMap(name, ele);
