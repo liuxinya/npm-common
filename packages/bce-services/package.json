@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
-    "test": "jest --config jestconfig.json",
+    "test": "jest --config jestconfig.json --verbose --coverage",
     "prepublishOnly": "npm run test"
   },
   "author": "",

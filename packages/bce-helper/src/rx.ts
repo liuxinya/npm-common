@@ -89,7 +89,7 @@ export class RxObject<T> {
                 lastv = v;
                 time = setTimeout(() => {
                     newRx.next(lastv);
-                }, gap);
+                }, gap) as any;
             });
         });
         return newRx;

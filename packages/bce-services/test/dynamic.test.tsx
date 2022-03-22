@@ -86,7 +86,6 @@ describe('UDynamicService', () => {
                 }
             })
             expect(document.querySelectorAll('.test2').length).toBe(2);
-            console.log(123123123123);
             dy.destroyed(div1, true);
             await delay(800);
             expect(document.querySelectorAll('.test2').length).toBe(0);
