@@ -42,10 +42,10 @@ describe('UDynamicService', () => {
                     val: 1,
                 }
             })
-            expect(div.parentElement.tagName).toBe('BODY');
+            expect(div?.parentElement?.tagName).toBe('BODY');
         });
         test('正确打开一个组件 挂载到目标元素 target', () => {
-            const targetEle: HTMLDivElement = document.querySelector('#target');
+            const targetEle: HTMLDivElement = document.querySelector('#target') as any;
             const div = dy.open({
                 component: Test,
                 props: {
@@ -54,7 +54,7 @@ describe('UDynamicService', () => {
                 },
                 selector: targetEle,
             })
-            expect(div.parentElement.getAttribute('id')).toEqual('target');
+            expect(div?.parentElement?.getAttribute('id')).toEqual('target');
         });
     });
     describe('destroyed', () => {

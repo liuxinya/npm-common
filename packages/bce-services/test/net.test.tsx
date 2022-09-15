@@ -12,11 +12,4 @@ describe('static api', () => {
       expect(typeof UNetService.setUrl).toEqual('function')
       expect(typeof UNetService.setWithCredentials).toEqual('function')
     });
-    it('should have promise method helpers',  done => {
-        var promise = netService.get('/test');
-    
-        expect(typeof promise.then).toEqual('function');
-        expect(typeof promise.catch).toEqual('function');
-      });
-    
 })
