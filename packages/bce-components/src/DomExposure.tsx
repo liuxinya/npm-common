@@ -21,7 +21,7 @@ export function DomExposure(props: {
                 props.exposureHandler && props.exposureHandler();
                 if (props.type && props.label) {
                     const pushConfig = ['_trackEvent', type, 'exposure', label, value];
-                    (window as any) && (window as any)._hmt.push(pushConfig);
+                    (window as any) && (window as any)._hmt && (window as any)._hmt.push(pushConfig);
                 }
             };
             rx.subscribe(exposureHandler);
