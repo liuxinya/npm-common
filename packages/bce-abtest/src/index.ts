@@ -75,7 +75,14 @@ export class Abtest {
     public async getAbInfo() {
         if (this.abInfo) return this.abInfo;
         try {
-            const res = await netService.get<null, ABDetailObj, {id: string}>(urlMap[this.params.env || 'online'], null, {id: this.params.id});
+            const res = await netService.get<null, ABDetailObj, {id: string}>(
+                urlMap[this.params.env || 'online'],
+                null,
+                {id: this.params.id},
+                {
+                    withCredentials: true,
+                }
+            );
             return res.result;
         } catch(e) {
             const errMsg = `${e}-abtest信息获取出错`;
@@ -84,12 +91,11 @@ export class Abtest {
         }
         
     }
+    private get isClient() {
+        return typeof window === 'object';
+    }
     private get isServer() {
-        try {
-            return !window;
-        } catch (e) {
-            return true;
-        }
+        return !this.isClient;
     }
     private get defaultVersion() {
         return this.abInfo?.defaultVersion ?? this.params.defaultVersion;
