@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "target": "es5",
-    "module": "commonjs",
+    "module": "ES2020",
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "./dist/esm",
     "strict": true,
     "lib": [
       "DOM",
       "DOM.Iterable",
       "es6"
     ],
+    "moduleResolution": "Node",
     "strictNullChecks": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,

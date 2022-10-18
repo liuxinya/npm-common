@@ -10,8 +10,10 @@
       "DOM.Iterable",
       "esnext"
     ],
+    "strictNullChecks": false,
     "moduleResolution": "Node",
-    "strictNullChecks": false
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "test/*"]
