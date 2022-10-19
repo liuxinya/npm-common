@@ -129,7 +129,7 @@ type ABItemObj = {
     groupId: string;
     whiteList: string[];
     version: number;
-    desc: string;
+    description: string;
 }
 
 
