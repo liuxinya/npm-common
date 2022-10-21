@@ -12,8 +12,8 @@ const urlMap: {
     [p in AbtestConsructorParams['env']]: string;
 } = {
     'dev': 'https://yapi.baidu-int.com/mock/24735/api/cms_portal/abtest/:id',
-    'sandbox': '',
-    'online': ''
+    'sandbox': 'http://gzbh-sandbox144-store-5117.gzbh:8820/api/cms_portal/abtest/:id',
+    'online': 'http://bjyz-bce-online-portal-backend00.bjyz:8820/api/cms_portal/abtest/:id'
 }
 
 export class Abtest {
@@ -52,7 +52,7 @@ export class Abtest {
                 val = userKey < areaKey ? test0.version : test1.version;
                 // 查看白名单，重新修正val
                 this.abInfo.testList.forEach(item => {
-                    if (item.whiteList.includes(this.ruleId)) {
+                    if (item.whitelist.includes(this.ruleId)) {
                         val = item.version;
                     }
                 })
@@ -127,7 +127,7 @@ export type AbtestConsructorParams = {
 type ABItemObj = {
     flow: number;
     groupId: string;
-    whiteList: string[];
+    whitelist: string[];
     version: number;
     description: string;
 }
