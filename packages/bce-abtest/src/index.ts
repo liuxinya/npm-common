@@ -20,7 +20,7 @@ const urlMap: {
     'sandboxServer': 'http://gzbh-sandbox144-store-5117.gzbh:8666/api/abtest/:id',
     'sandboxConsole': 'https://qasandbox.bcetest.baidu.com/api/abtest/:id',
     'online': 'https://cloud.baidu.com/api/abtest/:id',
-    'onlineServer': 'http://bjdd-bce-online-product-console1.bjdd:8888/api/abtest/:id',
+    'onlineServer': 'http://portal-server.bce-portal.sdns.baidu.com/api/abtest/:id',
     'onlineConsole': 'https://console.bce.baidu.com/api/abtest/:id',
 }
 
@@ -119,10 +119,14 @@ export class Abtest {
         return this.abInfo?.defaultVersion ?? this.params.defaultVersion;
     }
     private get isConsole() {
-        const url = window.location.href;
-        return this.abInfo && this.abInfo.system === 'CONSOLE'
-            || url.includes('qasandbox.bcetest.baidu.com')
-            || url.includes('console.bce.baidu.com');
+        try {
+            const url = window.location.href;
+            return this.abInfo && this.abInfo.system === 'CONSOLE'
+                || url.includes('qasandbox.bcetest.baidu.com')
+                || url.includes('console.bce.baidu.com');
+        } catch(e) {
+            return false;
+        }
     }
     private get isAccountId() {
         return this.abInfo && this.abInfo.diversionBasis === 'accountId';
