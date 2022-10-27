@@ -8,17 +8,20 @@ export enum TestStatus {
     DELETE = 'DELETE'
 }
 
-type AllUrlMapKey = 'sandboxServer' | 'onlineServer' | 'devServer' | AbtestConsructorParams['env'];
+type AllUrlMapKey = 'sandboxServer' | 'onlineServer' | 'devServer' |'sandboxConsole' | 'onlineConsole' | 'devConsole' | AbtestConsructorParams['env'];
 
 const urlMap: {
     [p in AllUrlMapKey]: string;
 } = {
-    'dev': 'https://yapi.baidu-int.com/mock/24735/api/cms_portal/abtest/:id',
-    'devServer': 'https://yapi.baidu-int.com/mock/24735/api/cms_portal/abtest/:id',
+    'dev': 'https://yapi.baidu-int.com/mock/23718/api/abtest/:id',
+    'devServer': 'https://yapi.baidu-int.com/mock/23718/api/abtest/:id',
+    'devConsole': 'https://yapi.baidu-int.com/mock/23718/api/abtest/:id',
     'sandbox': 'http://cloudtest.baidu.com/api/abtest/:id',
     'sandboxServer': 'http://gzbh-sandbox144-store-5117.gzbh:8666/api/abtest/:id',
+    'sandboxConsole': 'https://qasandbox.bcetest.baidu.com/api/abtest/:id',
     'online': 'https://cloud.baidu.com/api/abtest/:id',
-    'onlineServer': 'http://bjdd-bce-online-product-console1.bjdd:8888/api/abtest/:id'
+    'onlineServer': 'http://bjdd-bce-online-product-console1.bjdd:8888/api/abtest/:id',
+    'onlineConsole': 'https://console.bce.baidu.com/api/abtest/:id',
 }
 
 export class Abtest {
@@ -98,7 +101,12 @@ export class Abtest {
     }
     private getAbinfoHttpUrl(): string {
         const env = this.params.env || 'online';
-        const urlKey: AllUrlMapKey = this.isClient ? env : `${env}Server`;
+        let urlKey: AllUrlMapKey = env;
+        if (this.isConsole) {
+            urlKey = `${env}Console`;
+            return urlMap[urlKey];
+        }
+        urlKey = this.isClient ? env : `${env}Server`;
         return urlMap[urlKey];
     }
     private get isClient() {
@@ -112,7 +120,7 @@ export class Abtest {
     }
     private get isConsole() {
         const url = window.location.href;
-        return this.abInfo && this.abInfo.system === 'console'
+        return this.abInfo && this.abInfo.system === 'CONSOLE'
             || url.includes('qasandbox.bcetest.baidu.com')
             || url.includes('console.bce.baidu.com');
     }
@@ -153,7 +161,7 @@ export type ABDetailObj = {
     abtestStatus: TestStatus;
     createdBy: string;
     createdAt: string;
-    system: 'console' | 'portal';
+    system: 'CONSOLE' | 'PORTAL';
     defaultVersion: number;
     testList: ABItemObj[];
 }
