@@ -20,7 +20,7 @@ const urlMap: {
     'sandboxServer': 'http://gzbh-sandbox144-store-5117.gzbh:8666/api/abtest/:id',
     'sandboxConsole': 'https://qasandbox.bcetest.baidu.com/api/abtest/:id',
     'online': 'https://cloud.baidu.com/api/abtest/:id',
-    'onlineServer': 'http://portal-server.bce-portal.sdns.baidu.com/api/abtest/:id',
+    'onlineServer': 'http://portal.bce-portal.sdns.baidu.com/api/abtest/:id',
     'onlineConsole': 'https://console.bce.baidu.com/api/abtest/:id',
 }
 
