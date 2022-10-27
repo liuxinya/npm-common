@@ -12,19 +12,19 @@ describe('abetst', () => {
             }
         });
     })
-    const arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
-    for(let i = 0; i < arr.length - 1; i++) {
-        test(`开头${arr[i]}，流量25-75，value ${i < 4 ? 0 : 1}`, async () => {
-            const val = await abFun({
-                id: '504576fe54b54a5b967624432d4e091d',
-                ruleId: `${arr[i]}888`,
-                env: 'sandbox',
-                defaultVersion: 0,
-                callback: val => {},
-            });
-            expect(val).toBe(i < 4 ? 0 : 1);
-        });
-    }
+    // const arr = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f'];
+    // for(let i = 0; i < arr.length - 1; i++) {
+    //     test(`开头${arr[i]}，流量25-75，value ${i < 4 ? 0 : 1}`, async () => {
+    //         const val = await abFun({
+    //             id: '504576fe54b54a5b967624432d4e091d',
+    //             ruleId: `${arr[i]}888`,
+    //             env: 'sandbox',
+    //             defaultVersion: 0,
+    //             callback: val => {},
+    //         });
+    //         expect(val).toBe(i < 4 ? 0 : 1);
+    //     });
+    // }
     test('开头7,50流量,value 0', async () => {
         const val = await abFun({
             id: '21',

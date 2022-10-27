@@ -8,12 +8,17 @@ export enum TestStatus {
     DELETE = 'DELETE'
 }
 
+type AllUrlMapKey = 'sandboxServer' | 'onlineServer' | 'devServer' | AbtestConsructorParams['env'];
+
 const urlMap: {
-    [p in AbtestConsructorParams['env']]: string;
+    [p in AllUrlMapKey]: string;
 } = {
     'dev': 'https://yapi.baidu-int.com/mock/24735/api/cms_portal/abtest/:id',
-    'sandbox': 'http://gzbh-sandbox144-store-5117.gzbh:8820/api/cms_portal/abtest/:id',
-    'online': 'http://bjyz-bce-online-portal-backend00.bjyz:8820/api/cms_portal/abtest/:id'
+    'devServer': 'https://yapi.baidu-int.com/mock/24735/api/cms_portal/abtest/:id',
+    'sandbox': 'http://cloudtest.baidu.com/api/abtest/:id',
+    'sandboxServer': 'http://gzbh-sandbox144-store-5117.gzbh:8666/api/abtest/:id',
+    'online': 'https://cloud.baidu.com/api/abtest/:id',
+    'onlineServer': 'http://bjdd-bce-online-product-console1.bjdd:8888/api/abtest/:id'
 }
 
 export class Abtest {
@@ -76,7 +81,7 @@ export class Abtest {
         if (this.abInfo) return this.abInfo;
         try {
             const res = await netService.get<null, ABDetailObj, {id: string}>(
-                urlMap[this.params.env || 'online'],
+                this.getAbinfoHttpUrl(),
                 null,
                 {id: this.params.id},
                 {
@@ -90,6 +95,11 @@ export class Abtest {
             this.params.errHandler && this.params.errHandler(errMsg);
         }
         
+    }
+    private getAbinfoHttpUrl(): string {
+        const env = this.params.env || 'online';
+        const urlKey: AllUrlMapKey = this.isClient ? env : `${env}Server`;
+        return urlMap[urlKey];
     }
     private get isClient() {
         return typeof window === 'object';
