@@ -10,10 +10,12 @@
       "DOM.Iterable",
       "esnext"
     ],
+    "allowJs": true,
     "strictNullChecks": false,
     "moduleResolution": "Node",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "esModuleInterop": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "test/*"]

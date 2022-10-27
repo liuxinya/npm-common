@@ -60,15 +60,16 @@ export class Abtest {
                 val = userKey < areaKey ? test0.version : test1.version;
                 // 查看白名单，重新修正val
                 this.abInfo.testList.forEach(item => {
-                    if (item.whitelist.includes(this.ruleId)) {
+                    if (item?.whitelist?.includes(this.ruleId)) {
                         val = item.version;
                     }
                 })
             } else {
                 val = this.defaultVersion;
             }
-        } catch {
+        } catch(e) {
             val = this.defaultVersion;
+            console.error('flowHandler-error', e);
         }
         return val;
     }
