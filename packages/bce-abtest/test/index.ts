@@ -9,9 +9,7 @@ describe('abtest-server', () => {
                 ruleId: `${arr[i]}888`,
                 env: 'sandbox',
                 defaultVersion: 1,
-                callback: (val, info) => {
-                    console.log(i, val, info)
-                },
+                callback: val => {},
             });
             expect(val).toBe(i < 4 ? 1 : 2);
         });
