@@ -4,6 +4,7 @@
   "description": "项目通用服务、基于react的动态组件、发布订阅、请求",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
+  "sideEffects": false,
   "directories": {
     "test": "test"
   },

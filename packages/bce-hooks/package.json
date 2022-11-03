@@ -4,6 +4,7 @@
   "description": "项目通用hook",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
+  "sideEffects": false,
   "directories": {
     "test": "test"
   },
