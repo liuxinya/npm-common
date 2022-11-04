@@ -1,6 +1,6 @@
 {
   "name": "@baidu/bce-abtest",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "abtest SDK",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
