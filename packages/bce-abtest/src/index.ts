@@ -83,9 +83,12 @@ export class Abtest {
     }
     public async getAbInfo() {
         if (this.abInfo) return this.abInfo;
+        let url = '';
         try {
+            url = this.getAbinfoHttpUrl();
+            console.info('getAbinfoHttpUrl', url);
             const res = await netService.get<null, ABDetailObj, {id: string}>(
-                this.getAbinfoHttpUrl(),
+                url,
                 null,
                 {id: this.params.id},
                 {
@@ -94,7 +97,7 @@ export class Abtest {
             );
             return res.result;
         } catch(e) {
-            const errMsg = `${e}-abtest信息获取出错`;
+            const errMsg = `${e}-abtest信息获取出错-url:${url}`;
             console.error('getAbInfo', errMsg);
             this.params.errHandler && this.params.errHandler(errMsg);
         }
