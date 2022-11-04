@@ -93,6 +93,9 @@ export class Abtest {
                 {id: this.params.id},
                 {
                     withCredentials: true,
+                    headers: {
+                        'is-server': this.isServer ? '1' : '0'
+                    }
                 }
             );
             return res.result;
