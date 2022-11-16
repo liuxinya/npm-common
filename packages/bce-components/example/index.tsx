@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { DomExposure } from '../dist/index';
+import { DomExposure, ULazyLoad } from '../dist/index';
 import './index.less';
 
 const App = () => {
@@ -12,6 +12,9 @@ const App = () => {
             <div>111111111</div>
           </div>
         </DomExposure>
+        <ULazyLoad>
+            <img data-src="https://bce.bdstatic.com/portal-cloud-server/images/index2022/solution/bg_mod_energy.jpg" alt="" />
+        </ULazyLoad>
       </div>
   );
 };
