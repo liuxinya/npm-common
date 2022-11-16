@@ -1,5 +1,4 @@
-import {useRef, cloneElement} from 'react';
-import {useOnMount} from '@baidu/bce-hooks';
+import {useRef, cloneElement, useEffect} from 'react';
 
 type Type = 'background' | 'backgroundImage' | 'all-imgs' | 'callback';
 export function ULazyLoad(
@@ -11,7 +10,7 @@ export function ULazyLoad(
     } & JSX.IntrinsicElements['div']
 ) {
     const ref = useRef<HTMLDivElement>(null);
-    useOnMount(() => {
+    useEffect(() => {
         let observerable: IntersectionObserver = null;
         try {
             observerable = new IntersectionObserver(entries => {
@@ -27,15 +26,15 @@ export function ULazyLoad(
                 rootMargin: '0px 0px 256px 0px',
                 ...props.option,
             });
+            observerable.observe(ref.current);
         } catch (e) {
             // 不兼容就直接赋值，以防页面资源位置空白
             setSrc(props.type, ref.current, props.lazyCallback);
         }
-        observerable.observe(ref.current);
         return () => {
-            ref.current && observerable.unobserve(ref.current);
+            ref.current && observerable && observerable.unobserve(ref.current);
         };
-    });
+    }, []);
     return cloneElement(props.children, {
         ref,
         className: `${props.children.props.className} lazy`,
