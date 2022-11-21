@@ -1,4 +1,4 @@
-import {getCookie} from '@baidu/bce-helper';
+import {getCookie, replaceOfString} from '@baidu/bce-helper';
 import {netService} from '@baidu/bce-services';
 
 export enum TestStatus {
@@ -16,12 +16,12 @@ const urlMap: {
     'dev': 'https://yapi.baidu-int.com/mock/23718/api/abtest/:id',
     'devServer': 'https://yapi.baidu-int.com/mock/23718/api/abtest/:id',
     'devConsole': 'https://yapi.baidu-int.com/mock/23718/api/abtest/:id',
-    'sandbox': 'http://cloudtest.baidu.com/api/abtest/:id',
-    'sandboxServer': 'http://gzbh-sandbox144-store-5117.gzbh:8666/api/abtest/:id',
-    'sandboxConsole': 'https://qasandbox.bcetest.baidu.com/api/abtest/:id',
-    'online': 'https://cloud.baidu.com/api/abtest/:id',
-    'onlineServer': 'http://portal.bce-portal.sdns.baidu.com/api/abtest/:id',
-    'onlineConsole': 'https://console.bce.baidu.com/api/abtest/:id',
+    'sandbox': 'https://bce.bdstatic.com/portal-cms/sandbox/abtest/:id.js',
+    'sandboxServer': 'https://bce-cdn.bj.bcebos.com/portal-cms/sandbox/abtest/:id.js',
+    'sandboxConsole': 'https://bce.bdstatic.com/portal-cms/sandbox/abtest/:id.js',
+    'online': 'https://bce.bdstatic.com/portal-cms/online/abtest/:id.js',
+    'onlineServer': 'https://bce-cdn.bj.bcebos.com/portal-cms/online/abtest/:id.js',
+    'onlineConsole': 'https://bce.bdstatic.com/portal-cms/online/abtest/:id.js',
 }
 
 export class Abtest {
@@ -35,7 +35,7 @@ export class Abtest {
     }
     private async setUp() {
         // 获取信息
-        this.abInfo = await this.getAbInfo();
+        this.abInfo = await this.getAbInfo() as any;
         // 确定分流id 
         this.ruleId = this.getRuleId();
         const val = this.flowHandler();
@@ -86,11 +86,10 @@ export class Abtest {
         let url = '';
         try {
             url = this.getAbinfoHttpUrl();
-            console.info('getAbinfoHttpUrl', url);
             const res = await netService.get<null, ABDetailObj, {id: string}>(
                 url,
                 null,
-                {id: this.params.id},
+                this.isDev ? {id: this.params.id} : null,
                 {
                     withCredentials: true,
                     headers: {
@@ -98,7 +97,7 @@ export class Abtest {
                     }
                 }
             );
-            return res.result;
+            return this.isDev ? res.result : res;
         } catch(e) {
             const errMsg = `${e}-abtest信息获取出错-url:${url}`;
             console.error('getAbInfo', errMsg);
@@ -114,7 +113,10 @@ export class Abtest {
             return urlMap[urlKey];
         }
         urlKey = this.isClient ? env : `${env}Server`;
-        return urlMap[urlKey];
+        return this.isDev ? urlMap[urlKey] : replaceOfString(urlMap[urlKey], {':id': this.params.id});
+    }
+    private get isDev() {
+        return this.params.env === 'dev';
     }
     private get isClient() {
         return typeof window === 'object';
@@ -142,7 +144,7 @@ export class Abtest {
 
 
 export type AbtestConsructorParams = {
-    id: string;
+    id: string; // abtest id
     defaultVersion: number;
     // 分流id, 适用于 accountid 或者 服务端的百度ID
     ruleId?: string;
