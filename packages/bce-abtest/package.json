@@ -1,6 +1,6 @@
 {
   "name": "@baidu/bce-abtest",
-  "version": "1.1.12",
+  "version": "1.1.13",
   "description": "abtest SDK",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -27,6 +27,6 @@
   ],
   "dependencies": {
     "@baidu/bce-helper": "^1.1.7",
-    "@baidu/bce-services": "^1.1.7"
+    "@baidu/bce-services": "^1.1.13"
   }
 }
