@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {cloneElement, useRef} from 'react';
 import {useOnMount} from '@baidu/bce-hooks';
 import {RxObject} from '@baidu/bce-helper';
 
@@ -9,9 +9,13 @@ export function DomExposure(props: {
     label?: string;
     value?: string;
     exposureHandler?: () => void;
+    /** 是否就只监听一次 */
+    once?: boolean;
+    /** 是否直接使用child的顶级元素 默认false */
+    useRootDom?: boolean;
     className?: string;
 }) {
-    const {type, label, value, className} = props;
+    const {type, label, value, className, once = true, useRootDom = false} = props;
     const ref = useRef<HTMLDivElement>(null);
     useOnMount(() => {
         let observer: IntersectionObserver = null;
@@ -29,7 +33,10 @@ export function DomExposure(props: {
                 for (const item of entries) {
                     if (item.isIntersecting) {
                         rx.next(item.target as any);
-                        rx.unsubscribe(exposureHandler);
+                        if(once) {
+                            rx.unsubscribe(exposureHandler);
+                            observer.unobserve(ref.current);
+                        }
                     }
                 }
             }, {
@@ -43,7 +50,11 @@ export function DomExposure(props: {
         };
     });
 
-    return (
+    return useRootDom ? (
+        cloneElement(props.children, {
+            ref
+        })
+    ) : (
         <div ref={ref} className={className}>
             {props.children}
         </div>
