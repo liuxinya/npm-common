@@ -20,7 +20,7 @@
     "analyze": "size-limit --why"
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=17"
   },
   "husky": {
     "hooks": {
@@ -64,6 +64,7 @@
   },
   "alias": {
     "@baidu/bce-helper": "../../node_modules/@baidu/bce-helper/dist",
-    "@baidu/bce-hooks": "../../node_modules/@baidu/bce-hooks/dist"
+    "@baidu/bce-hooks": "../../node_modules/@baidu/bce-hooks/dist",
+    "@baidu/bce-services": "../../node_modules/@baidu/bce-services/dist"
   }
 }

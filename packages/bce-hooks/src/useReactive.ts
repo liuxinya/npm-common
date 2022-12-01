@@ -3,19 +3,19 @@
 
 import {stop, reactive, effect} from '@vue/reactivity';
 import {useMemo, useEffect, useCallback} from 'react';
-import * as _ from 'lodash';
+import {cloneDeep} from 'lodash';
 import {isObject, isArray} from '@baidu/bce-helper';
 import {useForceUpdate} from './lifeCycle';
 
 export function useReactive<T extends object>(initState: T) {
     const forceUpdate = useForceUpdate();
-    const stateOrigin = useMemo(() => _.cloneDeep(initState), [initState]);
+    const stateOrigin = useMemo(() => cloneDeep(initState), [initState]);
     const state = useMemo(() => reactive<T>(initState), [initState]);
     const stateDeps = useMemo<Array<{key: string, isReset: boolean}>>(() => (initState as any).deps, [initState]);
     // 依赖收集， 只收集被 @State 装饰的属性
     const depsGather = useCallback((target = state, deps: Array<{key: string, isReset: boolean}> = stateDeps || []) => {
         deps.forEach(item => {
-            const dep = target[item.key];
+            const dep = (target as any)[item.key];
             if (isObject(dep)) {
                 depsGather(dep, Object.keys(dep).map(tem => ({key: tem, isReset: item.isReset})));
             }

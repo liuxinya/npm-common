@@ -21,7 +21,7 @@ export function useStateRef<T>(initialState: T | (() => T)): [
     });
 
     // 把setState的原始用法也保留
-    const setValue = useCallback(value => {
+    const setValue = useCallback((value: any) => {
         if (isFunction(value)) {
             setState((prevState: T) => {
                 const newState = value(prevState);
