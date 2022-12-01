@@ -841,17 +841,17 @@
   resolved "http://registry.npm.baidu-int.com/@types%2fq/-/q-1.5.5.tgz"
   integrity sha512-L28j2FcJfSZOnL1WBjDYp2vUHCeIFlyYI/53EwD/rKUBQ7MtUUfbQWiyKJGpcnv4/WgrhWsFKrcPstcAt/J0tQ==
 
-"@types/react-dom@^16.8.4":
-  version "16.9.16"
-  resolved "http://registry.npm.baidu-int.com/@types%2freact-dom/-/react-dom-16.9.16.tgz"
-  integrity sha512-Oqc0RY4fggGA3ltEgyPLc3IV9T73IGoWjkONbsyJ3ZBn+UPPCYpU2ec0i3cEbJuEdZtkqcCF2l1zf2pBdgUGSg==
+"@types/react-dom@^18.0.9":
+  version "18.0.9"
+  resolved "http://registry.npm.baidu-int.com/@types%2freact-dom/-/react-dom-18.0.9.tgz#ffee5e4bfc2a2f8774b15496474f8e7fe8d0b504"
+  integrity sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==
   dependencies:
-    "@types/react" "^16"
+    "@types/react" "*"
 
-"@types/react@^16", "@types/react@^16.9.11":
-  version "16.14.32"
-  resolved "http://registry.npm.baidu-int.com/@types%2freact/-/react-16.14.32.tgz"
-  integrity sha512-hvEy4vGVADbtj/U6+CA5SRC5QFIjdxD7JslAie8EuAYZwhYY9bgforpXNyF1VFzhnkEOesDy1278t1wdjN74cw==
+"@types/react@*", "@types/react@^18.0.25":
+  version "18.0.25"
+  resolved "http://registry.npm.baidu-int.com/@types%2freact/-/react-18.0.25.tgz#8b1dcd7e56fe7315535a4af25435e0bb55c8ae44"
+  integrity sha512-xD6c0KDT4m7n9uD4ZHi02lzskaiqcBxf4zi+tXZY98a04wvc0hi/TcCPC2FOESZi51Nd7tlUeOJY8RofL799/g==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"

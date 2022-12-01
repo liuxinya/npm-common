@@ -11,10 +11,6 @@ export function downloadFileByFrontend(data: BlobPart, fileName: string) {
         a.download = fileName;
         a.href = URL.createObjectURL(blob);
         a.click();
-    } else if (typeof window.navigator.msSaveBlob !== 'undefined') {
-        // IE version
-        const blob = new Blob([data], {type: 'application/force-download'});
-        window.navigator.msSaveBlob(blob, fileName);
     } else {
         // Firefox version
         const file = new File([data], fileName, {type: 'application/force-download'});
@@ -24,18 +20,13 @@ export function downloadFileByFrontend(data: BlobPart, fileName: string) {
 
 
 export function downFileByArrayBuffer(data: BlobPart, fileName: string) {
-    if (typeof window.navigator.msSaveBlob !== 'undefined') {
-        window.navigator.msSaveBlob(new Blob([data]), 'test.xls');
-    }
-    else {
-        const url = window.URL.createObjectURL(new Blob([data]));
-        const link = document.createElement('a');
-        link.style.display = 'none';
-        link.href = url;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link); // 下载完成移除元素
-        window.URL.revokeObjectURL(url); // 释放掉blob对象
-    }
+    const url = window.URL.createObjectURL(new Blob([data]));
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // 下载完成移除元素
+    window.URL.revokeObjectURL(url); // 释放掉blob对象
 }

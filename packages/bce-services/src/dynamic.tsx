@@ -7,7 +7,6 @@
 import {Injectable} from '@baidu/ioc';
 import * as ReactDOM from 'react-dom';
 import {removeFromArrayByCondition} from '@baidu/bce-helper';
-
 @Injectable()
 export class UDynamicService {
 

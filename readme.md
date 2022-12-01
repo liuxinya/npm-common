@@ -24,6 +24,10 @@ lerna bootstrap
 
     - 执行所有 package 的 `build` 指令
 
+* ` lerna exec yarn run build --scope=@baidu/bce-services`
+
+    - 指定包 build
+
 * `发布失败了，包版本已经被lerna更改了咋办`
 
 回退方案
