@@ -13,7 +13,7 @@ export function getCookie(key?: string) {
     return key ? cookie[key] : cookie;
 }
 
-export function setCookie<T>(key: string, value: T, days: number = 0, isEncode = true) {
+export function setCookie<T>(key: string, value: T, days: number = 0, isEncode = true, host = location.host) {
     let valueStr: string = isObject(value) ? JSON.stringify(value) : String(value);
     valueStr = isEncode ? encodeURIComponent(valueStr) : valueStr;
     let expires: string = '';
@@ -26,7 +26,7 @@ export function setCookie<T>(key: string, value: T, days: number = 0, isEncode =
         exp.setTime(exp.getTime() + days * 24 * 60 * 60 * 1000);
         expires = `expires=${exp.toUTCString()};`;
     }
-    document.cookie = `${key}=${valueStr};path=/;${expires};`;
+    document.cookie = `${key}=${valueStr};path=/;${expires};domain=${host}`;
 }
 
 export function delCookie(key: string) {
