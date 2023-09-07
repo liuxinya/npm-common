@@ -15,7 +15,7 @@ export function jsonp<T>(url: string, opts: {
             data = {},
         } = opts;
         const name = `${prefix}${new Date().getTime()}`;
-        let timer: NodeJS.Timeout = null;
+        let timer: number = null;
         // 清除script标签以及注册的全局函数以及超时定时器
         function cleanup() { // 清除函数
             if (script.parentNode) {

@@ -5,4 +5,4 @@ echo "npm: v$(npm -v)"
 
 NODE_ENV=development npm install
 
-npm run build
+pnpm run build

@@ -52,7 +52,7 @@ export function useHttp<Req, Res, ResOrigin = Res, Q = any>(
         };
         return new Promise((resolve, reject) => {
             setLoading(true);
-            Ioc(UNetService)[newConfig.methods]<Req, Res, Q>(newConfig.url, params, newConfig.query, newConfig.config).then(res => {
+            Ioc(UNetService)[newConfig.methods]<Req, Res, Q>(newConfig.url, params, newConfig.query, newConfig.config as any).then(res => {
                 // 考虑分页数据
                 const resOrigin = isUndefined(res.result) ? (res.page || res) : res.result;
                 const resRes = newConfig.transform ? newConfig.transform((resOrigin as any)) : resOrigin;

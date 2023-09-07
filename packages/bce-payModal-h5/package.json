@@ -7,7 +7,7 @@
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build --target lib --name bce-paymodal-h5 --dest dist src/index.js",
-    "prepare": "npm run build"
+    "prepare": "pnpm run build"
   },
   "dependencies": {
     "@baidu/bce-helper": "^1.1.17",

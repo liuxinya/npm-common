@@ -5,8 +5,15 @@
 
 
 import {Injectable} from '@baidu/ioc';
-import * as ReactDOM from 'react-dom';
 import {removeFromArrayByCondition} from '@baidu/bce-helper';
+import * as ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
+import * as React from 'react';
+
+const version = Number(React?.version?.slice(0, 2)) || 18;
+const is17 = version < 18;
+console.info(`react环境-${version}`)
+
 @Injectable()
 export class UDynamicService {
 
@@ -17,9 +24,15 @@ export class UDynamicService {
         const Component = options.component;
         const name = Component.name;
         const div = document.createElement('div');
-        ReactDOM.render((
-            <Component id={div} {...options.props} />
-        ), div);
+        if (is17) {
+            ReactDOM.render((
+                <Component id={div} {...options.props} />
+            ), div);
+        } else {
+            createRoot(
+                div
+            ).render(<Component id={div} {...options.props} />);
+        }
         if (options.selector) {
             options.selector.appendChild(div);
         } else {
@@ -32,7 +45,9 @@ export class UDynamicService {
         return div;
     }
     private destroyedEleAndCom(ele: Element) {
-        ReactDOM.unmountComponentAtNode(ele);
+        if (is17) {
+            ReactDOM.unmountComponentAtNode(ele);
+        }
         ele.remove();
     }
     private removeDivFormMap(name: string, ele: Element) {

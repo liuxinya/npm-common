@@ -72,7 +72,8 @@ describe('UDynamicService', () => {
             }
         })
         test('销毁一个', async () => {
-            expect(document.querySelectorAll('.test2').length).toBe(2);
+            // react 18 createRoot 是异步的 必须delay
+            await delay(100);
             dy.destroyed(div2);
             await delay(500);
             expect(document.querySelector('#test2')).toBe(null);
@@ -85,6 +86,8 @@ describe('UDynamicService', () => {
                     val: 1111,
                 }
             })
+            // react 18 createRoot 是异步的 必须delay
+            await delay(100);
             expect(document.querySelectorAll('.test2').length).toBe(2);
             dy.destroyed(div1, true);
             await delay(800);

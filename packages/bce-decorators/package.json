@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-    "prepare": "npm run build",
+    "prepare": "pnpm run build",
     "test": "jest --config jestconfig.json"
   },
   "author": "",

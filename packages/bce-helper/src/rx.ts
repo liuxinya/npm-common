@@ -81,7 +81,7 @@ export class RxObject<T> {
     debounceTime(gap = 10) {
         const newRx = new RxObject<T>();
         let lastv: T = null;
-        let time: NodeJS.Timeout = null;
+        let time: number = null;
         this.onCompleted(() => newRx.complete());
         newRx.onSubscribe(() => {
             this.subscribe((v: T) => {
