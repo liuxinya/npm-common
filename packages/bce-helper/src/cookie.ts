@@ -29,12 +29,15 @@ export function setCookie<T>(key: string, value: T, days: number = 0, isEncode =
     document.cookie = `${key}=${valueStr};path=/;${expires};domain=${host}`;
 }
 
-export function delCookie(key: string) {
-    document.cookie = key + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+export function delCookie(key: string, host: string = location.host) {
+    const preVal = getCookie(key);
+    if(preVal) {
+        document.cookie = `${key}=${preVal};domain=${host};expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+    }
 }
 
-export function clearCookie() {
-    Object.keys(getCookie()).forEach(key => delCookie(key))
+export function clearCookie(host: string = location.host) {
+    Object.keys(getCookie()).forEach(key => delCookie(key, host))
 }
 
 function getCookieToObj() {
