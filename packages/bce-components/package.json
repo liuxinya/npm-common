@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -47,8 +47,8 @@
     }
   ],
   "dependencies": {
-    "@baidu/bce-helper": "^2.0.0",
-    "@baidu/bce-hooks": "^2.0.0"
+    "@baidu/bce-helper": "^2.0.1",
+    "@baidu/bce-hooks": "^2.0.1"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.1.0",
