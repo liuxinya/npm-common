@@ -40,7 +40,7 @@ git reset --hard HEAD~1 && git tag -d $(git log --date-order --tags --simplify-b
 
 # 关于bce-storage的特别解释
 ## 使用文档
-http://wiki.baidu.com/pages/viewpage.action?pageId=1593070933
+https://ku.baidu-int.com/knowledge/HFVrC7hq1Q/Jxkg7f6irO/WHLW4-Xvhe/M3lcZs7nzoINTn
 
 ## 开发相关
 如果更新了npm包，记得更新一下bos上的文件，具体步骤如下：

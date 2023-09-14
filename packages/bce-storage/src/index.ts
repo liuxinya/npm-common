@@ -88,6 +88,7 @@ class BceStorage {
             };
             if (this.isLoaded) {
                 this.postMessage(postMessageOption);
+                resolve(JSON.stringify(option.payload));
             } else {
                 let time = 0;
                 const timer = setInterval(() => {

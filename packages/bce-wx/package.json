@@ -1,6 +1,6 @@
 {
   "name": "@baidu/bce-wx",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "项目通用hook",
   "main": "dist/index.js",
   "directories": {

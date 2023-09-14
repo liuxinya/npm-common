@@ -1,6 +1,6 @@
 {
   "name": "@baidu/bce-hooks",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "项目通用hook",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -32,8 +32,8 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@baidu/bce-helper": "^2.0.1",
-    "@baidu/bce-services": "^2.0.1",
+    "@baidu/bce-helper": "^2.0.2",
+    "@baidu/bce-services": "^2.0.2",
     "@baidu/ioc": "^1.0.0",
     "@vue/reactivity": "^3.0.11"
   }
