@@ -16,6 +16,14 @@ lerna bootstrap
 
 ## `其他`
 
++ `lerna add module-1 --scope=module-2 --dev`
+
+    - 安装 module-1 到 module-2 的 devDependencies
+
++ `lerna add module-1`
+
+    - 安装 module-1 到所有 package
+
 + `lerna clean`  
 
     - 清理所有 package 的 node_modules 文件夹

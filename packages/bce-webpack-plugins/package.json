@@ -18,5 +18,8 @@
     "mv": "^2.1.1",
     "typescript": "^4.3.5",
     "webpack": "^5.50.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.6"
   }
 }

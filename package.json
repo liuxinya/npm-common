@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "devDependencies": {
+    "@types/jest": "^29.5.6",
     "lerna": "^4.0.0"
   },
   "workspaces": [

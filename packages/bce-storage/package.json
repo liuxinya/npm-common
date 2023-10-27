@@ -16,5 +16,8 @@
   "dependencies": {
     "global": "^4.4.0",
     "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.6"
   }
 }
