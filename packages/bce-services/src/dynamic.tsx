@@ -7,7 +7,6 @@
 import {Injectable} from '@baidu/ioc';
 import {removeFromArrayByCondition} from '@baidu/bce-helper';
 import * as ReactDOM from 'react-dom';
-import {createRoot} from 'react-dom/client';
 import * as React from 'react';
 
 const version = Number(React?.version?.slice(0, 2)) || 18;
@@ -29,9 +28,11 @@ export class UDynamicService {
                 <Component id={div} {...options.props} />
             ), div);
         } else {
-            createRoot(
-                div
-            ).render(<Component id={div} {...options.props} />);
+            import('react-dom/client').then(({createRoot}) => {
+                createRoot(
+                    div
+                ).render(<Component id={div} {...options.props} />);
+            })
         }
         if (options.selector) {
             options.selector.appendChild(div);
