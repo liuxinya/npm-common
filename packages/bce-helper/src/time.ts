@@ -1,5 +1,5 @@
-import * as moment from 'moment';
+import * as dayjs from 'dayjs';
 
 export function utcToBJ(value: string, formatRule = 'YYYY.MM.DD HH:mm') {
-    return moment(value).format(formatRule);
+    return dayjs(value).format(formatRule);
 }
